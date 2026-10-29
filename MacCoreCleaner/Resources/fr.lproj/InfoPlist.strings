@@ -1,0 +1,4 @@
+"CFBundleDisplayName" = "Mac Core";
+"NSDesktopFolderUsageDescription" = "Autorisez Mac Core à rechercher de gros fichiers ici. Ils ne seront supprimés qu’après confirmation.";
+"NSDocumentsFolderUsageDescription" = "Autorisez Mac Core à rechercher de gros fichiers ici. Ils ne seront supprimés qu’après confirmation.";
+"NSDownloadsFolderUsageDescription" = "Autorisez Mac Core à rechercher de gros fichiers ici. Ils ne seront supprimés qu’après confirmation.";

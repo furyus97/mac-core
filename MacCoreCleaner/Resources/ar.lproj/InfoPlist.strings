@@ -1,0 +1,4 @@
+"CFBundleDisplayName" = "Mac Core";
+"NSDesktopFolderUsageDescription" = "اسمح لـ Mac Core بفحص هذا المجلد بحثًا عن ملفات كبيرة. لا تُزال الملفات إلا بعد تأكيدك.";
+"NSDocumentsFolderUsageDescription" = "اسمح لـ Mac Core بفحص هذا المجلد بحثًا عن ملفات كبيرة. لا تُزال الملفات إلا بعد تأكيدك.";
+"NSDownloadsFolderUsageDescription" = "اسمح لـ Mac Core بفحص هذا المجلد بحثًا عن ملفات كبيرة. لا تُزال الملفات إلا بعد تأكيدك.";

@@ -1,0 +1,15 @@
+build/
+DerivedData/
+*.xcarchive
+*.dSYM.zip
+*.app.dSYM
+*.zip
+.DS_Store
+xcuserdata/
+# Internal release records and the separate App Store edition stay private.
+RELEASE_*.md
+AppStore/
+MacCoreAppStore/
+MacCoreAppStore.xcodeproj/
+MacCoreAppStoreTests/
+프로모션 이미지/

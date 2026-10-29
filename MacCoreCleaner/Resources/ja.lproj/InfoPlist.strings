@@ -1,0 +1,4 @@
+"CFBundleDisplayName" = "Mac Core";
+"NSDesktopFolderUsageDescription" = "このフォルダ内の大容量ファイルを検索します。ファイルは確認後にのみ削除されます。";
+"NSDocumentsFolderUsageDescription" = "このフォルダ内の大容量ファイルを検索します。ファイルは確認後にのみ削除されます。";
+"NSDownloadsFolderUsageDescription" = "このフォルダ内の大容量ファイルを検索します。ファイルは確認後にのみ削除されます。";

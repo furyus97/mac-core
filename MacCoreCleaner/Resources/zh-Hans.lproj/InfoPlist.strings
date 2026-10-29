@@ -1,0 +1,4 @@
+"CFBundleDisplayName" = "Mac Core";
+"NSDesktopFolderUsageDescription" = "允许 Mac Core 扫描此文件夹中的大文件。仅在您确认后才会移除文件。";
+"NSDocumentsFolderUsageDescription" = "允许 Mac Core 扫描此文件夹中的大文件。仅在您确认后才会移除文件。";
+"NSDownloadsFolderUsageDescription" = "允许 Mac Core 扫描此文件夹中的大文件。仅在您确认后才会移除文件。";

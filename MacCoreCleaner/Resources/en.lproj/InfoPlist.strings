@@ -1,0 +1,5 @@
+"CFBundleDisplayName" = "Mac Core";
+"NSHumanReadableCopyright" = "Copyright © 2026 Mac Core. All rights reserved.";
+"NSDesktopFolderUsageDescription" = "Mac Core scans your Desktop only to find large files you choose to review. Nothing is removed without your explicit confirmation.";
+"NSDocumentsFolderUsageDescription" = "Mac Core scans your Documents only to find large files you choose to review. Nothing is removed without your explicit confirmation.";
+"NSDownloadsFolderUsageDescription" = "Mac Core scans Downloads only to find large files you choose to review. Nothing is removed without your explicit confirmation.";

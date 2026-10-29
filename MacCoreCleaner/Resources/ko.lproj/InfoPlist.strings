@@ -1,0 +1,5 @@
+"CFBundleDisplayName" = "Mac Core";
+"NSHumanReadableCopyright" = "Copyright © 2026 Mac Core. All rights reserved.";
+"NSDesktopFolderUsageDescription" = "Mac Core는 사용자가 검토할 대용량 파일을 찾기 위해서만 데스크탑을 스캔합니다. 명시적으로 확인하기 전에는 아무것도 제거하지 않습니다.";
+"NSDocumentsFolderUsageDescription" = "Mac Core는 사용자가 검토할 대용량 파일을 찾기 위해서만 문서 폴더를 스캔합니다. 명시적으로 확인하기 전에는 아무것도 제거하지 않습니다.";
+"NSDownloadsFolderUsageDescription" = "Mac Core는 사용자가 검토할 대용량 파일을 찾기 위해서만 다운로드 폴더를 스캔합니다. 명시적으로 확인하기 전에는 아무것도 제거하지 않습니다.";
