@@ -3,21 +3,21 @@ import SwiftUI
 /// The Mac Core color system. Exact spec values, resolved dynamically per
 /// appearance (Apple HIG: semantic, adaptive, never hard-coded per view).
 enum AppColor {
-    // Surfaces
-    static let background = Color(lightHex: "F4F4F3", darkHex: "1B1C1E")
-    static let card       = Color(lightHex: "FFFFFF", darkHex: "242527")
-    static let sidebar    = Color(lightHex: "ECECEB", darkHex: "202123")
-    static let divider    = Color(lightHex: "DCDDDD", darkHex: "3A3B3D")
+    // Surfaces — airy lavender light theme, deep ink dark theme.
+    static let background = Color(lightHex: "F5F4FA", darkHex: "131219")
+    static let card       = Color(lightHex: "FFFFFF", darkHex: "1E1D27")
+    static let sidebar    = Color(lightHex: "EFEDF7", darkHex: "17161F")
+    static let divider    = Color(lightHex: "E3E0EE", darkHex: "34323F")
 
     // Semantic
-    static let primary    = Color(lightHex: "356887", darkHex: "97BDD3")
-    static let success    = Color(lightHex: "357557", darkHex: "9CBEA9")
-    static let warning    = Color(lightHex: "926316", darkHex: "D9BA80")
-    static let danger     = Color(lightHex: "B74747", darkHex: "E69D9D")
+    static let primary    = Color(lightHex: "5B4FE0", darkHex: "A79CFF")
+    static let success    = Color(lightHex: "16936A", darkHex: "6FD6A8")
+    static let warning    = Color(lightHex: "C27C0E", darkHex: "F2C26B")
+    static let danger     = Color(lightHex: "D9384F", darkHex: "FF8A9A")
 
     // Text
-    static let primaryText   = Color(lightHex: "242629", darkHex: "ECEDEE")
-    static let secondaryText = Color(lightHex: "61666C", darkHex: "B1B5BA")
+    static let primaryText   = Color(lightHex: "16141F", darkHex: "EEEDF5")
+    static let secondaryText = Color(lightHex: "686579", darkHex: "A9A6BA")
 
     /// Soft tinted fill behind icons / chips.
     static func tintedFill(_ color: Color, _ opacity: Double = 0.14) -> Color {
@@ -25,8 +25,27 @@ enum AppColor {
     }
 }
 
-/// Gradients used for the modern, technical surface treatment (subtle, never gaudy).
+/// The four signature tile colors used for at-a-glance cards and feature icons.
+enum TileColor {
+    static let cleanup    = [Color(hex: "E5485F"), Color(hex: "A3203A")]
+    static let speed      = [Color(hex: "7FB52A"), Color(hex: "3E6B12")]
+    static let protection = [Color(hex: "7067F0"), Color(hex: "3F33C4")]
+    static let apps       = [Color(hex: "3D8EF2"), Color(hex: "1D4FB0")]
+    static let files      = [Color(hex: "F29A3D"), Color(hex: "B85A12")]
+    static let system     = [Color(hex: "2FB3B0"), Color(hex: "13706E")]
+}
+
+/// Gradients for the light, glassy surface treatment.
 enum AppGradient {
+    /// Brand gradient used for hero numbers, primary buttons and highlights.
+    static let brand = LinearGradient(colors: [Color(hex: "4F46E5"), Color(hex: "8B5CF6"), Color(hex: "E26BB4")],
+                                      startPoint: .leading, endPoint: .trailing)
+    static let brandDiagonal = LinearGradient(colors: [Color(hex: "6D5DF6"), Color(hex: "A06BF0"), Color(hex: "E77BB8")],
+                                              startPoint: .topLeading, endPoint: .bottomTrailing)
+    /// Rich two-stop gradient for a colored tile.
+    static func tile(_ colors: [Color]) -> LinearGradient {
+        LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing)
+    }
     /// Tinted fill for icon tiles (top-lit).
     static func tile(_ color: Color) -> LinearGradient {
         LinearGradient(colors: [color.opacity(0.28), color.opacity(0.14)],
@@ -42,14 +61,14 @@ enum AppGradient {
         LinearGradient(colors: [color.opacity(0.30), color.opacity(0.02)],
                        startPoint: .top, endPoint: .bottom)
     }
-    /// Hairline card border with a top highlight (subtle "lit from above" edge).
+    /// Hairline card border with a top highlight.
     static var cardHairline: LinearGradient {
-        LinearGradient(colors: [Color.white.opacity(0.14), AppColor.divider.opacity(0.45)],
+        LinearGradient(colors: [Color.white.opacity(0.7), AppColor.divider.opacity(0.6)],
                        startPoint: .top, endPoint: .bottom)
     }
     /// Faint top-down sheen overlaid on card surfaces for depth.
     static var cardSheen: LinearGradient {
-        LinearGradient(colors: [Color.white.opacity(0.05), Color.clear],
+        LinearGradient(colors: [Color.white.opacity(0.08), Color.clear],
                        startPoint: .top, endPoint: .center)
     }
 }

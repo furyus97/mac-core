@@ -14,7 +14,7 @@
 "sidebar.section.overview" = "Overview";
 "sidebar.section.insights" = "System";
 "sidebar.section.tools" = "Management";
-"sidebar.localMode" = "LOCAL ONLY · PRIVATE";
+"sidebar.localMode" = "Local only · Private";
 "safety.safe" = "Safe";
 "safety.caution" = "Caution";
 "safety.risky" = "Risky";

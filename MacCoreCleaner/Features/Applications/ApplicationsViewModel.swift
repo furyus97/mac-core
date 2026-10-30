@@ -32,10 +32,20 @@ final class ApplicationsViewModel: ObservableObject {
 
     // MARK: Derived
 
+    enum Filter: String, CaseIterable, Identifiable { case all, unused, largest; var id: String { rawValue } }
+    @Published var filter: Filter = .all
+
+    var unusedCount: Int { apps.filter { !$0.isSystem && $0.isUnused() }.count }
+
     var filteredApps: [InstalledApp] {
         let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !query.isEmpty else { return apps }
-        return apps.filter { $0.name.localizedCaseInsensitiveContains(query) }
+        var result = query.isEmpty ? apps : apps.filter { $0.name.localizedCaseInsensitiveContains(query) }
+        switch filter {
+        case .all: break
+        case .unused: result = result.filter { !$0.isSystem && $0.isUnused() }.sorted { ($0.lastUsedDate ?? .distantPast) < ($1.lastUsedDate ?? .distantPast) }
+        case .largest: result.sort { $0.sizeBytes > $1.sizeBytes }
+        }
+        return result
     }
 
     /// Size of the leftover items the user has selected (excludes the app bundle).

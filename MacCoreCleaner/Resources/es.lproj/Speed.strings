@@ -1,0 +1,23 @@
+/* Speed (startup items) */
+"nav.speed" = "Velocidad";
+"speed.subtitle" = "Apps y asistentes que se abren solos al iniciar sesión o al encender el Mac.";
+"speed.eyebrow" = "Elementos de arranque";
+"speed.summary.title" = "Elementos de arranque y en segundo plano";
+"speed.metric.enabled" = "Activos al iniciar sesión";
+"speed.metric.switchable" = "Puedes cambiar";
+"speed.openLoginItems" = "Abrir ajustes de ítems de inicio";
+"speed.reversibleNote" = "Desactivar un elemento solo evita que se abra automáticamente. No se elimina nada y puedes volver a activarlo cuando quieras.";
+"speed.scope.userAgent" = "Tus agentes de inicio de sesión";
+"speed.scope.globalAgent" = "Agentes para todos los usuarios";
+"speed.scope.globalDaemon" = "Servicios del sistema en segundo plano";
+"speed.adminNote" = "Requiere administrador: gestiónalo en Ajustes del Sistema.";
+"speed.tag.running" = "En ejecución";
+"speed.tag.apple" = "Apple";
+"speed.tag.linked" = "Enlazado";
+"speed.help.linked" = "Este elemento enlaza a un archivo de otra ubicación, por eso se muestra en solo lectura.";
+"speed.empty.title" = "No hay elementos de arranque";
+"speed.empty.message" = "No se encontró nada en las carpetas LaunchAgents ni LaunchDaemons.";
+"speed.error.toggle" = "No se pudo cambiar «%@»: %@";
+"speed.error.apple" = "Los elementos de Apple los gestiona macOS y no se pueden cambiar aquí.";
+"speed.error.label" = "La etiqueta de este elemento no es válida, así que no se puede cambiar.";
+"speed.error.command" = "launchctl no pudo aplicar el cambio.";

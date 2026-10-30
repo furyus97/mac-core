@@ -1,0 +1,16 @@
+"nav.spaceMap" = "空間地圖";
+"spacemap.home" = "主資料夾";
+"spacemap.up" = "返回上層資料夾";
+"spacemap.startupDisk" = "啟動磁碟";
+"spacemap.volumeUsage" = "已使用 %1$@ · 共 %3$@，可用 %2$@";
+"spacemap.empty.title" = "沒有可顯示的內容";
+"spacemap.empty.message" = "此資料夾是空的或無法讀取。";
+"spacemap.hint" = "按一下資料夾泡泡即可查看其中內容。";
+"spacemap.measuring" = "正在測量第 %1$d 項，共 %2$d 項…";
+"spacemap.partial" = "部分結果 — 有些項目無法讀取";
+"spacemap.measured" = "測量完成 · %1$@";
+"spacemap.largest" = "最大的項目";
+"spacemap.more" = "另外 %1$d 個項目 · %2$@";
+"spacemap.readOnly" = "僅供檢視 — 這裡不會更改或刪除任何內容。";
+"spacemap.reclaimable" = "可清理 %1$@";
+"spacemap.open" = "開啟";

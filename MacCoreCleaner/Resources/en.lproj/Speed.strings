@@ -1,0 +1,23 @@
+/* Speed (startup items) */
+"nav.speed" = "Speed";
+"speed.subtitle" = "Apps and helpers that start on their own when you log in or your Mac starts up.";
+"speed.eyebrow" = "Startup items";
+"speed.summary.title" = "Startup & background items";
+"speed.metric.enabled" = "Enabled at login";
+"speed.metric.switchable" = "You can switch";
+"speed.openLoginItems" = "Open Login Items Settings";
+"speed.reversibleNote" = "Turning an item off only stops it from launching automatically. Nothing is deleted, and you can turn it back on anytime.";
+"speed.scope.userAgent" = "Your login agents";
+"speed.scope.globalAgent" = "Agents for all users";
+"speed.scope.globalDaemon" = "System background services";
+"speed.adminNote" = "Requires administrator — manage in System Settings.";
+"speed.tag.running" = "Running";
+"speed.tag.apple" = "Apple";
+"speed.tag.linked" = "Linked";
+"speed.help.linked" = "This item links to a file in another location, so it's shown read-only.";
+"speed.empty.title" = "No startup items";
+"speed.empty.message" = "Nothing was found in your LaunchAgents or LaunchDaemons folders.";
+"speed.error.toggle" = "Couldn't change “%@”: %@";
+"speed.error.apple" = "Apple items are managed by macOS and can't be changed here.";
+"speed.error.label" = "This item's label isn't valid, so it can't be changed.";
+"speed.error.command" = "launchctl couldn't apply the change.";

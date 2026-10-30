@@ -1,0 +1,16 @@
+"nav.spaceMap" = "Mapa de espaço";
+"spacemap.home" = "Pasta pessoal";
+"spacemap.up" = "Voltar para a pasta superior";
+"spacemap.startupDisk" = "Disco de inicialização";
+"spacemap.volumeUsage" = "%1$@ usados · %2$@ livres de %3$@";
+"spacemap.empty.title" = "Nada para mostrar";
+"spacemap.empty.message" = "Esta pasta está vazia ou não pôde ser lida.";
+"spacemap.hint" = "Clique na bolha de uma pasta para ver o conteúdo.";
+"spacemap.measuring" = "Medindo %1$d de %2$d itens…";
+"spacemap.partial" = "Resultado parcial — alguns itens não puderam ser lidos";
+"spacemap.measured" = "Medido · %1$@";
+"spacemap.largest" = "Maiores itens";
+"spacemap.more" = "Mais %1$d itens · %2$@";
+"spacemap.readOnly" = "Somente visualização — nada é alterado ou apagado aqui.";
+"spacemap.reclaimable" = "%1$@ podem ser liberados";
+"spacemap.open" = "Abrir";

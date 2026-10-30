@@ -1,0 +1,16 @@
+"nav.spaceMap" = "Speicherkarte";
+"spacemap.home" = "Benutzerordner";
+"spacemap.up" = "Zum übergeordneten Ordner";
+"spacemap.startupDisk" = "Startvolume";
+"spacemap.volumeUsage" = "%1$@ belegt · %2$@ frei von %3$@";
+"spacemap.empty.title" = "Nichts anzuzeigen";
+"spacemap.empty.message" = "Dieser Ordner ist leer oder konnte nicht gelesen werden.";
+"spacemap.hint" = "Auf eine Ordnerblase klicken, um den Inhalt zu sehen.";
+"spacemap.measuring" = "%1$d von %2$d Objekten werden gemessen …";
+"spacemap.partial" = "Teilergebnis – einige Objekte konnten nicht gelesen werden";
+"spacemap.measured" = "Gemessen · %1$@";
+"spacemap.largest" = "Größte Objekte";
+"spacemap.more" = "%1$d weitere Objekte · %2$@";
+"spacemap.readOnly" = "Nur Ansicht – hier wird nichts geändert oder gelöscht.";
+"spacemap.reclaimable" = "%1$@ bereinigbar";
+"spacemap.open" = "Öffnen";

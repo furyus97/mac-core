@@ -1,0 +1,23 @@
+/* Speed (startup items) */
+"nav.speed" = "السرعة";
+"speed.subtitle" = "تطبيقات ومساعدات تبدأ تلقائيًا عند تسجيل الدخول أو تشغيل جهاز Mac.";
+"speed.eyebrow" = "عناصر بدء التشغيل";
+"speed.summary.title" = "عناصر بدء التشغيل والخلفية";
+"speed.metric.enabled" = "مفعّلة عند تسجيل الدخول";
+"speed.metric.switchable" = "يمكنك تغييرها";
+"speed.openLoginItems" = "فتح إعدادات عناصر تسجيل الدخول";
+"speed.reversibleNote" = "إيقاف أي عنصر يمنعه فقط من البدء تلقائيًا. لا يُحذف أي شيء، ويمكنك إعادة تفعيله في أي وقت.";
+"speed.scope.userAgent" = "وكلاء تسجيل الدخول الخاصة بك";
+"speed.scope.globalAgent" = "وكلاء لجميع المستخدمين";
+"speed.scope.globalDaemon" = "خدمات النظام في الخلفية";
+"speed.adminNote" = "يتطلب صلاحيات المسؤول — أدِرها من إعدادات النظام.";
+"speed.tag.running" = "قيد التشغيل";
+"speed.tag.apple" = "Apple";
+"speed.tag.linked" = "مرتبط";
+"speed.help.linked" = "يشير هذا العنصر إلى ملف في موقع آخر، لذلك يُعرض للقراءة فقط.";
+"speed.empty.title" = "لا توجد عناصر بدء تشغيل";
+"speed.empty.message" = "لم يُعثر على أي شيء في مجلدي LaunchAgents وLaunchDaemons.";
+"speed.error.toggle" = "تعذّر تغيير «%@»: %@";
+"speed.error.apple" = "عناصر Apple يديرها macOS ولا يمكن تغييرها هنا.";
+"speed.error.label" = "تسمية هذا العنصر غير صالحة، لذا لا يمكن تغييره.";
+"speed.error.command" = "تعذّر على launchctl تطبيق التغيير.";

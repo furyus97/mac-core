@@ -24,6 +24,15 @@ final class DashboardViewModel: ObservableObject {
     @Published var netHistory: [Double] = []
     private let historyCap = 24
 
+    // At-a-glance overview (space map and the four summary tiles).
+    @Published var spaceNodes: [SpaceNode] = []
+    @Published var startupCount: Int?
+    @Published var protectionScore: Int?
+    @Published var appCount: Int?
+    @Published var unusedAppCount = 0
+    @Published var lastScan: Date?
+    private var overviewLoaded = false
+
     @Published var isLoading = false
     @Published var isEstimating = false
     @Published var lastUpdated: Date?
@@ -101,6 +110,24 @@ final class DashboardViewModel: ObservableObject {
     func quickScan() async {
         await refresh()
         await estimateReclaimable()
+        lastScan = Date()
+    }
+
+    /// Loads the slower overview figures once; each source fails independently.
+    func loadOverview(force: Bool = false) async {
+        guard force || !overviewLoaded else { return }
+        overviewLoaded = true
+        let home = FileManager.default.homeDirectoryForCurrentUser
+        async let nodes = SpaceMapService.children(of: home, limit: 7)
+        async let startup = StartupItemsService.list()
+        async let protection = ProtectionService.evaluate()
+        spaceNodes = await nodes
+        startupCount = await startup.filter(\.isEnabled).count
+        protectionScore = await protection.score
+        let apps = await services.appInventory.installedApps()
+        guard !Task.isCancelled else { return }
+        appCount = apps.count
+        unusedAppCount = apps.filter { !$0.isSystem && $0.isUnused() }.count
     }
 
     /// One-tap safe cleanup: scans the always-safe categories and stages them for

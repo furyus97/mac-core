@@ -1,0 +1,16 @@
+"nav.spaceMap" = "공간 지도";
+"spacemap.home" = "홈";
+"spacemap.up" = "상위 폴더로";
+"spacemap.startupDisk" = "시동 디스크";
+"spacemap.volumeUsage" = "%1$@ 사용 · 전체 %3$@ 중 %2$@ 남음";
+"spacemap.empty.title" = "표시할 항목 없음";
+"spacemap.empty.message" = "폴더가 비어 있거나 읽을 수 없습니다.";
+"spacemap.hint" = "폴더 버블을 클릭하면 안을 볼 수 있어요.";
+"spacemap.measuring" = "%2$d개 중 %1$d개 측정 중…";
+"spacemap.partial" = "일부 항목을 읽지 못해 결과가 불완전합니다";
+"spacemap.measured" = "측정 완료 · %1$@";
+"spacemap.largest" = "큰 항목";
+"spacemap.more" = "외 %1$d개 항목 · %2$@";
+"spacemap.readOnly" = "보기 전용 — 이 화면에서는 아무것도 바꾸거나 지우지 않습니다.";
+"spacemap.reclaimable" = "%1$@ 정리 가능";
+"spacemap.open" = "열기";

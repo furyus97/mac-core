@@ -65,11 +65,20 @@ func activeLanguage() -> Lang { languageState.read() }
 
 enum LocalizationCatalog {
     static let tables: [Lang: [String: String]] = Dictionary(uniqueKeysWithValues: Lang.allCases.map { language in
-        let path = Bundle.main.path(forResource: language.rawValue, ofType: "lproj")
-        let url = path.map { URL(fileURLWithPath: $0).appendingPathComponent("Localizable.strings") }
-        let data = url.flatMap { try? Data(contentsOf: $0) }
-        let table = data.flatMap { try? PropertyListSerialization.propertyList(from: $0, format: nil) }
-        return (language, table as? [String: String] ?? [:])
+        // Every *.strings table in the language folder (except InfoPlist) merges into
+        // one catalog, so features can keep their strings in their own table.
+        guard let path = Bundle.main.path(forResource: language.rawValue, ofType: "lproj") else { return (language, [:]) }
+        let folder = URL(fileURLWithPath: path)
+        let files = ((try? FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)) ?? [])
+            .filter { $0.pathExtension == "strings" && $0.lastPathComponent != "InfoPlist.strings" }
+            .sorted { ($0.lastPathComponent == "Localizable.strings" ? "" : $0.lastPathComponent) < ($1.lastPathComponent == "Localizable.strings" ? "" : $1.lastPathComponent) }
+        var merged: [String: String] = [:]
+        for file in files {
+            guard let data = try? Data(contentsOf: file),
+                  let table = try? PropertyListSerialization.propertyList(from: data, format: nil) as? [String: String] else { continue }
+            merged.merge(table) { current, _ in current }
+        }
+        return (language, merged)
     })
     static func string(_ key: String, language: Lang) -> String {
         tables[language]?[key] ?? tables[.en]?[key] ?? key

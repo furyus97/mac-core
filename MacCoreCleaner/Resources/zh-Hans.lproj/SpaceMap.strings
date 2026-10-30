@@ -1,0 +1,16 @@
+"nav.spaceMap" = "空间地图";
+"spacemap.home" = "主文件夹";
+"spacemap.up" = "返回上级文件夹";
+"spacemap.startupDisk" = "启动磁盘";
+"spacemap.volumeUsage" = "已用 %1$@ · 共 %3$@，可用 %2$@";
+"spacemap.empty.title" = "没有可显示的内容";
+"spacemap.empty.message" = "此文件夹为空或无法读取。";
+"spacemap.hint" = "点按文件夹气泡即可查看其中内容。";
+"spacemap.measuring" = "正在测量第 %1$d 项，共 %2$d 项…";
+"spacemap.partial" = "部分结果 — 某些项目无法读取";
+"spacemap.measured" = "测量完成 · %1$@";
+"spacemap.largest" = "最大的项目";
+"spacemap.more" = "另外 %1$d 项 · %2$@";
+"spacemap.readOnly" = "仅供查看 — 此处不会更改或删除任何内容。";
+"spacemap.reclaimable" = "可清理 %1$@";
+"spacemap.open" = "打开";

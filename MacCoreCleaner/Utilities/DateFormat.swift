@@ -1,6 +1,11 @@
 import Foundation
 
 enum DateFormat {
+    /// Short time ("11:43 AM") in the app language rather than the system locale.
+    static func time(_ date: Date) -> String {
+        date.formatted(Date.FormatStyle(date: .omitted, time: .shortened).locale(activeLanguage().locale))
+    }
+
     static func string(_ date: Date?) -> String {
         guard let date else { return "—" }
         return date.formatted(.dateTime.year().month(.abbreviated).day()

@@ -1,0 +1,23 @@
+/* Speed (startup items) */
+"nav.speed" = "速度";
+"speed.subtitle" = "登入或 Mac 開機時自動執行的 App 和輔助程式。";
+"speed.eyebrow" = "啟動項目";
+"speed.summary.title" = "啟動與背景項目";
+"speed.metric.enabled" = "登入時啟用";
+"speed.metric.switchable" = "可切換";
+"speed.openLoginItems" = "打開「登入項目」設定";
+"speed.reversibleNote" = "關閉項目只會停止它自動啟動，不會刪除任何內容，隨時都能重新開啟。";
+"speed.scope.userAgent" = "我的登入代理程式";
+"speed.scope.globalAgent" = "所有使用者的代理程式";
+"speed.scope.globalDaemon" = "系統背景服務";
+"speed.adminNote" = "需要管理者權限——請在「系統設定」中管理。";
+"speed.tag.running" = "執行中";
+"speed.tag.apple" = "Apple";
+"speed.tag.linked" = "連結";
+"speed.help.linked" = "此項目連結至其他位置的檔案，因此僅以唯讀方式顯示。";
+"speed.empty.title" = "沒有啟動項目";
+"speed.empty.message" = "在 LaunchAgents 和 LaunchDaemons 檔案夾中找不到任何項目。";
+"speed.error.toggle" = "無法更改「%@」：%@";
+"speed.error.apple" = "Apple 項目由 macOS 管理，無法在此更改。";
+"speed.error.label" = "此項目的標籤無效，無法更改。";
+"speed.error.command" = "launchctl 無法套用更改。";

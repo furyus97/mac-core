@@ -1,0 +1,23 @@
+/* Speed (startup items) */
+"nav.speed" = "Velocidade";
+"speed.subtitle" = "Apps e auxiliares que abrem sozinhos quando você inicia a sessão ou liga o Mac.";
+"speed.eyebrow" = "Itens de inicialização";
+"speed.summary.title" = "Itens de inicialização e em segundo plano";
+"speed.metric.enabled" = "Ativos no login";
+"speed.metric.switchable" = "Você pode alterar";
+"speed.openLoginItems" = "Abrir ajustes de Itens de Início";
+"speed.reversibleNote" = "Desativar um item só impede que ele abra automaticamente. Nada é apagado e você pode reativá-lo quando quiser.";
+"speed.scope.userAgent" = "Seus agentes de login";
+"speed.scope.globalAgent" = "Agentes para todos os usuários";
+"speed.scope.globalDaemon" = "Serviços do sistema em segundo plano";
+"speed.adminNote" = "Requer administrador — gerencie nos Ajustes do Sistema.";
+"speed.tag.running" = "Em execução";
+"speed.tag.apple" = "Apple";
+"speed.tag.linked" = "Vinculado";
+"speed.help.linked" = "Este item aponta para um arquivo em outro local, por isso é exibido somente para leitura.";
+"speed.empty.title" = "Nenhum item de inicialização";
+"speed.empty.message" = "Nada foi encontrado nas pastas LaunchAgents e LaunchDaemons.";
+"speed.error.toggle" = "Não foi possível alterar “%@”: %@";
+"speed.error.apple" = "Itens da Apple são gerenciados pelo macOS e não podem ser alterados aqui.";
+"speed.error.label" = "O rótulo deste item não é válido, por isso ele não pode ser alterado.";
+"speed.error.command" = "O launchctl não conseguiu aplicar a alteração.";

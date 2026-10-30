@@ -69,6 +69,14 @@ struct ApplicationsView: View {
                 .foregroundStyle(AppColor.secondaryText)
             TextField(tr("apps.searchPlaceholder"), text: $vm.searchText)
                 .textFieldStyle(.roundedBorder)
+            Picker("", selection: $vm.filter) {
+                Text(tr("apps.filter.all")).tag(ApplicationsViewModel.Filter.all)
+                Text(tr("apps.filter.unused", vm.unusedCount)).tag(ApplicationsViewModel.Filter.unused)
+                Text(tr("apps.filter.largest")).tag(ApplicationsViewModel.Filter.largest)
+            }
+            .pickerStyle(.segmented)
+            .labelsHidden()
+            .fixedSize()
         }
     }
 
@@ -139,9 +147,9 @@ struct ApplicationsView: View {
             VStack(alignment: .trailing, spacing: 2) {
                 Text(app.formattedSize)
                     .font(.mcBody.monospacedDigit())
-                Text(tr("apps.installed", DateFormat.string(app.installDate)))
+                Text(app.lastUsedDate.map { tr("apps.lastUsed", DateFormat.string($0)) } ?? tr("apps.installed", DateFormat.string(app.installDate)))
                     .font(.mcMicro)
-                    .foregroundStyle(AppColor.secondaryText)
+                    .foregroundStyle(app.isUnused() ? AppColor.warning : AppColor.secondaryText)
             }
             .frame(width: 160, alignment: .trailing)
 

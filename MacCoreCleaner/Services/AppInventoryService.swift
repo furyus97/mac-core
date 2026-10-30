@@ -1,4 +1,5 @@
 import Foundation
+import CoreServices
 
 /// Lists installed third-party applications and discovers their leftover support
 /// files for the Applications (uninstaller) screen.
@@ -101,7 +102,8 @@ final class AppInventoryService: AppInventory {
             bundleID: bundleID,
             sizeBytes: size,
             installDate: installDate,
-            isSystem: isSystem
+            isSystem: isSystem,
+            lastUsedDate: MDItemCreateWithURL(nil, bundleURL as CFURL).flatMap { MDItemCopyAttribute($0, kMDItemLastUsedDate) as? Date }
         )
     }
 

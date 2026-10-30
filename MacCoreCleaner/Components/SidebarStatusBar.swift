@@ -54,10 +54,8 @@ struct SidebarStatusBar: View {
                 .frame(maxWidth: .infinity)
             }
         }
-        .padding(.horizontal, Theme.Spacing.md)
-        .padding(.vertical, Theme.Spacing.sm)
-        .background(AppColor.sidebar)
-        .overlay(alignment: .top) { Divider() }
+        .padding(.horizontal, Theme.Spacing.sm)
+        .padding(.vertical, Theme.Spacing.xs)
         .task {
             while !Task.isCancelled {
                 await vm.tick()

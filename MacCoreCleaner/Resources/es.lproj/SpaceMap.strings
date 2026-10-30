@@ -1,0 +1,16 @@
+"nav.spaceMap" = "Mapa de espacio";
+"spacemap.home" = "Inicio";
+"spacemap.up" = "Volver a la carpeta superior";
+"spacemap.startupDisk" = "Disco de arranque";
+"spacemap.volumeUsage" = "%1$@ usados · %2$@ libres de %3$@";
+"spacemap.empty.title" = "Nada que mostrar";
+"spacemap.empty.message" = "Esta carpeta está vacía o no se pudo leer.";
+"spacemap.hint" = "Haz clic en la burbuja de una carpeta para ver su contenido.";
+"spacemap.measuring" = "Midiendo %1$d de %2$d elementos…";
+"spacemap.partial" = "Resultado parcial: no se pudieron leer algunos elementos";
+"spacemap.measured" = "Medido · %1$@";
+"spacemap.largest" = "Elementos más grandes";
+"spacemap.more" = "%1$d elementos más · %2$@";
+"spacemap.readOnly" = "Solo lectura: aquí no se cambia ni se elimina nada.";
+"spacemap.reclaimable" = "%1$@ se pueden liberar";
+"spacemap.open" = "Abrir";

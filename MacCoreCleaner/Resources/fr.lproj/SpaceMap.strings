@@ -1,0 +1,16 @@
+"nav.spaceMap" = "Carte de l’espace";
+"spacemap.home" = "Départ";
+"spacemap.up" = "Revenir au dossier parent";
+"spacemap.startupDisk" = "Disque de démarrage";
+"spacemap.volumeUsage" = "%1$@ utilisés · %2$@ libres sur %3$@";
+"spacemap.empty.title" = "Rien à afficher";
+"spacemap.empty.message" = "Ce dossier est vide ou n’a pas pu être lu.";
+"spacemap.hint" = "Cliquez sur la bulle d’un dossier pour voir son contenu.";
+"spacemap.measuring" = "Mesure de %1$d éléments sur %2$d…";
+"spacemap.partial" = "Résultat partiel : certains éléments n’ont pas pu être lus";
+"spacemap.measured" = "Mesuré · %1$@";
+"spacemap.largest" = "Éléments les plus volumineux";
+"spacemap.more" = "%1$d autres éléments · %2$@";
+"spacemap.readOnly" = "Lecture seule : rien n’est modifié ni supprimé ici.";
+"spacemap.reclaimable" = "%1$@ récupérables";
+"spacemap.open" = "Ouvrir";

@@ -45,30 +45,31 @@ struct SmartScanView: View {
     private var hero: some View {
         VStack(spacing: Theme.Spacing.lg) {
             if vm.isScanning {
-                RingGauge(fraction: vm.scanFraction, label: ByteFormat.percent(vm.scanFraction),
-                          caption: tr("nav.smartScan"), tint: AppColor.primary)
-                    .frame(width: 160, height: 160)
-                Text(vm.scanPhase).font(.mcCaption).foregroundStyle(AppColor.secondaryText)
-                Button(tr("common.stop")) { vm.cancelScan() }
+                ScanOrb(fraction: vm.scanFraction)
+                    .frame(width: 190, height: 190)
+                Text(vm.scanPhase).font(.mcCaption).foregroundStyle(AppColor.secondaryText).lineLimit(1)
+                Button(tr("common.stop")) { vm.cancelScan() }.buttonStyle(.softCapsule)
             } else if vm.hasScanned {
-                Text(tr("smart.recoverable")).eyebrow()
+                StatusEyebrow(text: tr("smart.recoverable"), color: AppColor.success)
                 Text(ByteFormat.string(fromBytes: vm.totalFound))
-                    .font(.mcMetric(54)).foregroundStyle(AppColor.primaryText)
+                    .font(.mcHero(60))
+                    .foregroundStyle(AppGradient.brandDiagonal)
                     .contentTransition(.numericText())
                 Text(tr("smart.selectedSummary", vm.selectedCount, ByteFormat.string(fromBytes: vm.selectedBytes)))
                     .font(.mcCaption).foregroundStyle(AppColor.secondaryText)
+                if !vm.groups.isEmpty { categoryChips }
                 HStack(spacing: Theme.Spacing.md) {
-                    Button { vm.scan() } label: { Label(tr("smart.rescan"), systemImage: "arrow.clockwise") }
-                        .controlSize(.large)
-                        .disabled(vm.isCleaning)
                     Button { vm.startClean() } label: {
                         Label(tr("common.clean"), systemImage: "sparkles")
                     }
                     .buttonStyle(.primaryGradient)
                     .disabled(vm.selectedCount == 0 || vm.isCleaning)
+                    Button { vm.scan() } label: { Label(tr("smart.rescan"), systemImage: "arrow.clockwise") }
+                        .buttonStyle(.softCapsule)
+                        .disabled(vm.isCleaning)
                 }
             } else {
-                IconTile(systemName: "sparkles", tint: AppColor.primary, size: 64)
+                ScanOrb(fraction: nil).frame(width: 150, height: 150)
                 Text(tr("nav.smartScan")).font(.mcLargeTitle)
                 Text(tr("smart.subtitle"))
                     .font(.mcBody).foregroundStyle(AppColor.secondaryText)
@@ -79,7 +80,22 @@ struct SmartScanView: View {
             }
         }
         .frame(maxWidth: .infinity)
+        .padding(.vertical, Theme.Spacing.md)
         .card(padding: Theme.Spacing.outer, elevated: true)
+    }
+
+    private var categoryChips: some View {
+        HStack(spacing: 8) {
+            ForEach(vm.groups.prefix(5)) { group in
+                HStack(spacing: 6) {
+                    Image(systemName: group.icon).font(.system(size: 10, weight: .bold)).foregroundStyle(group.tint)
+                    Text(tr(group.titleKey)).font(.system(size: 11, weight: .medium)).lineLimit(1)
+                    Text(ByteFormat.string(fromBytes: group.totalBytes)).font(.mcMono(10)).foregroundStyle(AppColor.secondaryText)
+                }
+                .padding(.horizontal, 10).padding(.vertical, 6)
+                .background(Capsule().fill(group.tint.opacity(0.10)))
+            }
+        }
     }
 
     // MARK: Group card
@@ -152,6 +168,36 @@ struct SmartScanView: View {
         }
         .padding(.vertical, 5)
         .opacity(entry.wrappedValue.isEnabled ? 1 : 0.55)
+    }
+}
+
+/// Soft gradient orb: a progress ring while scanning, an idle glow otherwise.
+private struct ScanOrb: View {
+    let fraction: Double?
+    @State private var spin = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    var body: some View {
+        ZStack {
+            Circle().fill(AppGradient.brandDiagonal).opacity(0.16).blur(radius: 18)
+            Circle().fill(AppColor.card).shadow(color: Color(hex: "6D5DF6").opacity(0.18), radius: 16, y: 6)
+            Circle().stroke(AppColor.divider.opacity(0.6), lineWidth: 10).padding(14)
+            if let fraction {
+                Circle().trim(from: 0, to: max(0.02, fraction))
+                    .stroke(AppGradient.brandDiagonal, style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                    .rotationEffect(.degrees(-90)).padding(14)
+                    .animation(.easeOut(duration: 0.3), value: fraction)
+                Text(ByteFormat.percent(fraction)).font(.mcHero(34)).foregroundStyle(AppGradient.brandDiagonal)
+            } else {
+                Circle().trim(from: 0, to: 0.28)
+                    .stroke(AppGradient.brandDiagonal, style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                    .rotationEffect(.degrees(spin ? 360 : 0)).padding(14)
+                    .animation(.linear(duration: 6).repeatForever(autoreverses: false), value: spin)
+                Image(systemName: "sparkles").font(.system(size: 34, weight: .semibold)).foregroundStyle(AppGradient.brandDiagonal)
+            }
+        }
+        .onAppear { spin = !reduceMotion }
+        .accessibilityHidden(true)
     }
 }
 

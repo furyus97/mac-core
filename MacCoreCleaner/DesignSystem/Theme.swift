@@ -17,9 +17,9 @@ enum Theme {
     }
 
     enum Radius {
-        static let card: CGFloat = 10
-        static let control: CGFloat = 6
-        static let small: CGFloat = 6
+        static let card: CGFloat = 18
+        static let control: CGFloat = 10
+        static let small: CGFloat = 8
         static let pill: CGFloat = 999
     }
 
@@ -58,12 +58,15 @@ enum Theme {
 private struct CardModifier: ViewModifier {
     var padding: CGFloat
     var elevated: Bool
+    @Environment(\.colorScheme) private var scheme
     private var shape: RoundedRectangle { RoundedRectangle(cornerRadius: Theme.Radius.card, style: .continuous) }
     func body(content: Content) -> some View {
         content
             .padding(padding)
-            .background(shape.fill(AppColor.card))
-            .overlay(shape.strokeBorder(AppColor.divider.opacity(0.65), lineWidth: 0.7))
+            .background(shape.fill(AppColor.card.opacity(scheme == .dark ? 0.92 : 0.86)))
+            .background(shape.fill(.ultraThinMaterial))
+            .overlay(shape.strokeBorder(AppGradient.cardHairline, lineWidth: 0.8).opacity(scheme == .dark ? 0.35 : 1))
+            .shadow(color: Color(hex: "3B2F8F").opacity(scheme == .dark ? 0.0 : (elevated ? 0.10 : 0.05)), radius: elevated ? 22 : 14, x: 0, y: elevated ? 10 : 6)
     }
 }
 

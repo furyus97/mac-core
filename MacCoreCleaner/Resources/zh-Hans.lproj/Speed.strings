@@ -1,0 +1,23 @@
+/* Speed (startup items) */
+"nav.speed" = "速度";
+"speed.subtitle" = "登录或 Mac 启动时自动运行的 App 和辅助程序。";
+"speed.eyebrow" = "启动项";
+"speed.summary.title" = "启动项与后台项目";
+"speed.metric.enabled" = "登录时启用";
+"speed.metric.switchable" = "可切换";
+"speed.openLoginItems" = "打开“登录项”设置";
+"speed.reversibleNote" = "关闭某个项目只会阻止它自动启动，不会删除任何内容，随时可以重新打开。";
+"speed.scope.userAgent" = "我的登录代理";
+"speed.scope.globalAgent" = "所有用户的代理";
+"speed.scope.globalDaemon" = "系统后台服务";
+"speed.adminNote" = "需要管理员权限——请在“系统设置”中管理。";
+"speed.tag.running" = "运行中";
+"speed.tag.apple" = "Apple";
+"speed.tag.linked" = "链接";
+"speed.help.linked" = "此项目链接到其他位置的文件，因此仅以只读方式显示。";
+"speed.empty.title" = "没有启动项";
+"speed.empty.message" = "在 LaunchAgents 和 LaunchDaemons 文件夹中未找到任何项目。";
+"speed.error.toggle" = "无法更改“%@”：%@";
+"speed.error.apple" = "Apple 项目由 macOS 管理，无法在此更改。";
+"speed.error.label" = "此项目的标签无效，无法更改。";
+"speed.error.command" = "launchctl 无法应用更改。";

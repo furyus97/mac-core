@@ -14,6 +14,10 @@ enum NavItem: String, CaseIterable, Identifiable, Hashable {
     case applications
     case largeFiles
     case browser
+    case speed
+    case protection
+    case spaceMap
+    case duplicates
     case settings
 
     var id: String { rawValue }
@@ -35,6 +39,10 @@ enum NavItem: String, CaseIterable, Identifiable, Hashable {
         case .applications: return "app.badge.fill"
         case .largeFiles: return "doc.text.magnifyingglass"
         case .browser: return "safari.fill"
+        case .speed: return "bolt.fill"
+        case .protection: return "checkmark.shield.fill"
+        case .spaceMap: return "circle.hexagongrid.fill"
+        case .duplicates: return "square.on.square"
         case .settings: return "gearshape.fill"
         }
     }

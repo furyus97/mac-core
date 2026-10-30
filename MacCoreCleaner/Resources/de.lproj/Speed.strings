@@ -1,0 +1,23 @@
+/* Speed (startup items) */
+"nav.speed" = "Tempo";
+"speed.subtitle" = "Apps und Hilfsprogramme, die beim Anmelden oder Starten des Mac automatisch geöffnet werden.";
+"speed.eyebrow" = "Startobjekte";
+"speed.summary.title" = "Start- und Hintergrundobjekte";
+"speed.metric.enabled" = "Beim Anmelden aktiv";
+"speed.metric.switchable" = "Umschaltbar";
+"speed.openLoginItems" = "Anmeldeobjekte-Einstellungen öffnen";
+"speed.reversibleNote" = "Beim Ausschalten wird nur der automatische Start verhindert. Es wird nichts gelöscht, und Sie können das Objekt jederzeit wieder einschalten.";
+"speed.scope.userAgent" = "Ihre Anmelde-Agents";
+"speed.scope.globalAgent" = "Agents für alle Benutzer";
+"speed.scope.globalDaemon" = "Hintergrunddienste des Systems";
+"speed.adminNote" = "Erfordert Administratorrechte – in den Systemeinstellungen verwalten.";
+"speed.tag.running" = "Aktiv";
+"speed.tag.apple" = "Apple";
+"speed.tag.linked" = "Verknüpft";
+"speed.help.linked" = "Dieses Objekt verweist auf eine Datei an einem anderen Ort und wird daher schreibgeschützt angezeigt.";
+"speed.empty.title" = "Keine Startobjekte";
+"speed.empty.message" = "In den Ordnern „LaunchAgents“ und „LaunchDaemons“ wurde nichts gefunden.";
+"speed.error.toggle" = "„%@“ konnte nicht geändert werden: %@";
+"speed.error.apple" = "Apple-Objekte werden von macOS verwaltet und können hier nicht geändert werden.";
+"speed.error.label" = "Das Label dieses Objekts ist ungültig, daher kann es nicht geändert werden.";
+"speed.error.command" = "launchctl konnte die Änderung nicht anwenden.";

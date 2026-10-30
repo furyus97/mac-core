@@ -1,0 +1,16 @@
+"nav.spaceMap" = "スペースマップ";
+"spacemap.home" = "ホーム";
+"spacemap.up" = "親フォルダへ戻る";
+"spacemap.startupDisk" = "起動ディスク";
+"spacemap.volumeUsage" = "%1$@ 使用済み · %3$@ 中 %2$@ 空き";
+"spacemap.empty.title" = "表示する項目がありません";
+"spacemap.empty.message" = "このフォルダは空か、読み込めませんでした。";
+"spacemap.hint" = "フォルダのバブルをクリックすると中身を表示します。";
+"spacemap.measuring" = "%2$d 項目中 %1$d 項目を計測中…";
+"spacemap.partial" = "一部の項目を読み込めませんでした（部分的な結果）";
+"spacemap.measured" = "計測完了 · %1$@";
+"spacemap.largest" = "大きい項目";
+"spacemap.more" = "ほか %1$d 項目 · %2$@";
+"spacemap.readOnly" = "表示のみ — ここでは何も変更・削除しません。";
+"spacemap.reclaimable" = "%1$@ をクリーンアップ可能";
+"spacemap.open" = "開く";

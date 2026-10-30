@@ -20,7 +20,11 @@ struct DashboardView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Theme.Spacing.xl) {
-                hero
+                ViewThatFits(in: .horizontal) {
+                    HStack(alignment: .top, spacing: Theme.Spacing.gridGap) { hero; spaceCard.frame(width: 380) }
+                    VStack(spacing: Theme.Spacing.gridGap) { hero; spaceCard }
+                }
+                glanceTiles
                 SectionTitle(tr("dash.systemSection"))
                 LazyVGrid(columns: columns, spacing: Theme.Spacing.gridGap) {
                     metricCards
@@ -50,6 +54,7 @@ struct DashboardView: View {
             } else {
                 await vm.refresh()
             }
+            Task { await vm.loadOverview() }
             while !Task.isCancelled {
                 try? await Task.sleep(nanoseconds: 2_000_000_000)
                 guard !Task.isCancelled else { break }
@@ -78,81 +83,153 @@ struct DashboardView: View {
     // MARK: Hero
 
     private var hero: some View {
-        VStack(alignment: .leading, spacing: 24) {
-            ViewThatFits(in: .horizontal) {
-                HStack(spacing: 32) { healthRing; healthDetails }
-                VStack(alignment: .leading, spacing: 24) { healthRing; healthDetails }
+        VStack(alignment: .leading, spacing: 18) {
+            HStack {
+                StatusEyebrow(text: vm.lastScan.map { tr("home.scanComplete", DateFormat.time($0)) } ?? tr("home.notScanned"),
+                              color: vm.lastScan == nil ? AppColor.warning : AppColor.success)
+                Spacer()
+                if !vm.health.components.isEmpty {
+                    Label(tr("home.health", vm.health.score), systemImage: "heart.fill")
+                        .font(.system(size: 11, weight: .semibold))
+                        .foregroundStyle(StatusColor.forScore(vm.health.score))
+                        .padding(.horizontal, 10).padding(.vertical, 5)
+                        .background(Capsule().fill(StatusColor.forScore(vm.health.score).opacity(0.12)))
+                }
             }
-            Divider()
-            ViewThatFits(in: .horizontal) {
-                HStack(spacing: 20) { reclaimableValue; Spacer(); scanActions }
-                VStack(alignment: .leading, spacing: 16) { reclaimableValue; scanActions }
+            VStack(alignment: .leading, spacing: 2) {
+                if vm.lastScan != nil {
+                    Text(tr("home.ready")).font(.system(size: 22, weight: .semibold, design: .rounded)).foregroundStyle(AppColor.primaryText)
+                }
+                reclaimableValue
             }
+            Text(tr("home.readyBody")).font(.mcBody).foregroundStyle(AppColor.secondaryText)
+                .fixedSize(horizontal: false, vertical: true).frame(maxWidth: 420, alignment: .leading)
+            Spacer(minLength: 0)
+            scanActions
         }
+        .frame(maxWidth: .infinity, minHeight: 300, alignment: .topLeading)
         .card(padding: 28, elevated: true)
+        .background(alignment: .bottomTrailing) {
+            Circle().fill(Color(hex: "F7B6D2").opacity(0.35)).frame(width: 260).blur(radius: 70).offset(x: 40, y: 60)
+                .clipShape(RoundedRectangle(cornerRadius: Theme.Radius.card)).allowsHitTesting(false)
+        }
     }
 
     @ViewBuilder
-    private var healthRing: some View {
-        if vm.health.components.isEmpty {
-            VStack(spacing: 12) {
-                ProgressView()
-                Text(tr("dash.measuring")).font(.mcCaption)
-            }
-            .frame(width: 176, height: 176)
-        } else {
-            HealthScoreRing(score: vm.health.score, word: vm.health.word,
-                            caption: vm.health.caption, size: 160)
-                .padding(8)
-        }
-    }
-
-    private var healthDetails: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Label(tr("ui.live"), systemImage: "waveform.path")
-                .font(.mcMicro).foregroundStyle(AppColor.primary)
-            Text(tr("dash.healthScore")).font(.mcSectionTitle)
-            ForEach(vm.health.components) { component in
-                VStack(spacing: 6) {
-                    HStack {
-                        Text(component.name).font(.mcCaption)
-                        Spacer(minLength: 16)
-                        Text(component.detail).font(.mcCaption.monospacedDigit())
-                            .foregroundStyle(AppColor.secondaryText)
-                    }
-                    UsageBar(fraction: component.usageFraction, height: 5)
-                }
-            }
-        }
-        .frame(minWidth: 250, maxWidth: .infinity, alignment: .leading)
-    }
-
     private var reclaimableValue: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(tr("dash.reclaimable")).font(.mcCaption).foregroundStyle(AppColor.secondaryText)
-            if vm.isEstimating {
-                ProgressView().controlSize(.small)
-            } else {
-                Text(ByteFormat.string(fromBytes: vm.reclaimable))
-                    .font(.mcMetric(26)).foregroundStyle(AppColor.primaryText)
+        if vm.isEstimating {
+            HStack(spacing: 12) { ProgressView().controlSize(.small); Text(tr("common.scanning")).font(.mcCaption) }.frame(height: 80)
+        } else if vm.lastScan == nil {
+            Text(tr("home.scanPrompt"))
+                .font(.mcHero(46)).foregroundStyle(AppGradient.brand)
+                .lineLimit(2).minimumScaleFactor(0.6)
+        } else {
+            let parts = ByteFormat.string(fromBytes: vm.reclaimable).split(separator: " ", maxSplits: 1).map(String.init)
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Text(parts.first ?? "0").font(.mcHero(72)).foregroundStyle(AppGradient.brand)
+                Text(parts.count > 1 ? parts[1] : "").font(.system(size: 26, weight: .bold, design: .rounded)).foregroundStyle(AppColor.primary)
             }
+            .lineLimit(1).minimumScaleFactor(0.5)
+            .accessibilityElement(children: .combine)
         }
     }
 
+    @ViewBuilder
     private var scanActions: some View {
-        HStack(spacing: 12) {
-            Button { Task { await vm.quickScan() } } label: {
-                Label(tr("common.quickScan"), systemImage: "magnifyingglass")
+        if vm.lastScan == nil && !vm.isEstimating {
+            Button { Task { await vm.quickScan(); await vm.loadOverview(force: true) } } label: {
+                Label(tr("home.scanNow"), systemImage: "sparkle.magnifyingglass")
             }
-            .controlSize(.large)
-            .disabled(vm.isLoading || vm.isEstimating || vm.isPreparingClean || vm.isCleaning)
+            .buttonStyle(.primaryGradient)
+            .disabled(vm.isLoading || vm.isCleaning)
+        } else {
+            cleanActions
+        }
+    }
+
+    private var cleanActions: some View {
+        HStack(spacing: 14) {
             Button { Task { await vm.safeClean() } } label: {
-                Label(tr("common.safeClean"), systemImage: "sparkles")
+                HStack(spacing: 10) {
+                    Image(systemName: "sparkles").font(.system(size: 13, weight: .bold))
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(tr("home.clean"))
+                        Text(ByteFormat.string(fromBytes: vm.reclaimable)).font(.mcMono(10)).opacity(0.85)
+                    }
+                }
             }
             .buttonStyle(.primaryGradient)
             .disabled(vm.isLoading || vm.isPreparingClean || vm.isCleaning)
+            Button { nav.selection = .smartScan } label: {
+                Label(tr("home.review"), systemImage: "arrow.right").labelStyle(TrailingIconLabelStyle())
+            }
+            .buttonStyle(.plain).font(.system(size: 13, weight: .semibold)).foregroundStyle(AppColor.primary)
+            Spacer(minLength: 8)
+            Button { Task { await vm.quickScan(); await vm.loadOverview(force: true) } } label: {
+                Label(tr("home.scanAgain"), systemImage: "arrow.clockwise")
+            }
+            .buttonStyle(.softCapsule)
+            .disabled(vm.isLoading || vm.isEstimating || vm.isPreparingClean || vm.isCleaning)
         }
-        .fixedSize(horizontal: true, vertical: false)
+    }
+
+    private var spaceCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Text(tr("home.spaceMap")).font(.mcCardTitle)
+                Spacer()
+                Button(tr("home.open") + " ›") { nav.selection = .spaceMap }.buttonStyle(.plain)
+                    .font(.system(size: 12, weight: .semibold)).foregroundStyle(AppColor.primary)
+            }
+            if vm.spaceNodes.isEmpty {
+                VStack(spacing: 10) { ProgressView().controlSize(.small); Text(tr("common.scanning")).font(.mcCaption).foregroundStyle(AppColor.secondaryText) }
+                    .frame(maxWidth: .infinity, minHeight: 240)
+            } else {
+                SpaceBubbleChart(nodes: vm.spaceNodes, onSelect: { _ in nav.selection = .spaceMap })
+                    .frame(minHeight: 240)
+            }
+            Text(tr("home.diskSummary", ByteFormat.string(fromBytes: vm.disk.freeBytes), ByteFormat.string(fromBytes: vm.disk.totalBytes)))
+                .font(.mcMono(10)).foregroundStyle(AppColor.secondaryText)
+        }
+        .frame(maxHeight: .infinity, alignment: .top)
+        .card(padding: 22, elevated: true)
+    }
+
+    // MARK: At a glance
+
+    private var glanceTiles: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: Theme.Spacing.gridGap) { tiles.frame(minWidth: 190) }
+            Grid(horizontalSpacing: Theme.Spacing.gridGap, verticalSpacing: Theme.Spacing.gridGap) {
+                GridRow { cleanupTile; speedTile }
+                GridRow { protectionTile; appsTile }
+            }
+        }
+    }
+
+    @ViewBuilder private var tiles: some View { cleanupTile; speedTile; protectionTile; appsTile }
+
+    private var cleanupTile: some View {
+        let parts = ByteFormat.string(fromBytes: vm.reclaimable).split(separator: " ", maxSplits: 1).map(String.init)
+        let scanned = vm.lastScan != nil
+        return GlanceTile(title: tr("tile.cleanup.title"), icon: "trash.fill", colors: TileColor.cleanup,
+                          value: scanned ? (parts.first ?? "—") : "—", unit: scanned && parts.count > 1 ? parts[1] : nil,
+                          caption: tr("tile.cleanup.caption"), action: tr("tile.cleanup.action")) { nav.selection = .storage }
+    }
+    private var speedTile: some View {
+        GlanceTile(title: tr("tile.speed.title"), icon: "bolt.fill", colors: TileColor.speed,
+                   value: vm.startupCount.map(String.init) ?? "—", unit: tr("tile.speed.unit"),
+                   caption: tr("tile.speed.caption"), action: tr("tile.speed.action")) { nav.selection = .speed }
+    }
+    private var protectionTile: some View {
+        GlanceTile(title: tr("tile.protection.title"), icon: "checkmark.shield.fill", colors: TileColor.protection,
+                   value: vm.protectionScore.map(String.init) ?? "—", unit: "/ 100",
+                   caption: tr("tile.protection.caption"), action: tr("tile.protection.action")) { nav.selection = .protection }
+    }
+    private var appsTile: some View {
+        GlanceTile(title: tr("tile.apps.title"), icon: "square.grid.2x2.fill", colors: TileColor.apps,
+                   value: vm.appCount.map(String.init) ?? "—", unit: tr("tile.apps.unit"),
+                   caption: tr("tile.apps.caption", vm.unusedAppCount), action: tr("tile.apps.action")) { nav.selection = .applications }
     }
 
     // MARK: Metric cards

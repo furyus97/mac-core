@@ -1,0 +1,16 @@
+"nav.spaceMap" = "Space Map";
+"spacemap.home" = "Home";
+"spacemap.up" = "Back to parent folder";
+"spacemap.startupDisk" = "Startup Disk";
+"spacemap.volumeUsage" = "%1$@ used · %2$@ free of %3$@";
+"spacemap.empty.title" = "Nothing to show";
+"spacemap.empty.message" = "This folder is empty or couldn’t be read.";
+"spacemap.hint" = "Click a folder bubble to look inside.";
+"spacemap.measuring" = "Measuring %1$d of %2$d items…";
+"spacemap.partial" = "Partial result — some items couldn’t be read";
+"spacemap.measured" = "Measured · %1$@";
+"spacemap.largest" = "Largest Items";
+"spacemap.more" = "%1$d more items · %2$@";
+"spacemap.readOnly" = "View only — nothing is changed or deleted here.";
+"spacemap.reclaimable" = "%1$@ can be cleaned";
+"spacemap.open" = "Open";

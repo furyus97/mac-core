@@ -4,9 +4,9 @@ import SwiftUI
 /// Large sizes automatically render in SF Pro Display; body/caption in SF Pro Text.
 extension Font {
     /// 34 / Bold — Dashboard large title.
-    static let mcDashboardTitle = Font.system(size: 34, weight: .bold)
+    static let mcDashboardTitle = Font.system(size: 34, weight: .heavy, design: .rounded)
     /// 28 / Bold — screen large title.
-    static let mcLargeTitle = Font.system(size: 28, weight: .bold)
+    static let mcLargeTitle = Font.system(size: 28, weight: .heavy, design: .rounded)
     /// 22 / Semibold — section title.
     static let mcSectionTitle = Font.system(size: 22, weight: .semibold)
     /// 18 / Semibold — card title.
@@ -24,7 +24,12 @@ extension Font {
 
     /// Large rounded, tabular metric numbers (counts, sizes) — modern + stable.
     static func mcMetric(_ size: CGFloat = 40) -> Font {
-        .system(size: size, weight: .medium, design: .default).monospacedDigit()
+        .system(size: size, weight: .bold, design: .rounded).monospacedDigit()
+    }
+
+    /// Hero display number ("31.7 GB").
+    static func mcHero(_ size: CGFloat = 64) -> Font {
+        .system(size: size, weight: .heavy, design: .rounded).monospacedDigit()
     }
 
     /// Monospaced technical readout (per-core %, table cells, telemetry).

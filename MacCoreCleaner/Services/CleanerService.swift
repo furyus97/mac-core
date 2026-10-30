@@ -19,9 +19,13 @@ final class CleanerService {
     private static let removalQueue = DispatchQueue(label: "com.maccore.removal", qos: .userInitiated)
 
     private let safety: SafetyGuard
+    /// Moves one item to the Trash. Tests inject a fixture-local stand-in so the user's Trash is never touched.
+    private let moveToTrash: @Sendable (URL) throws -> Void
 
-    init(safety: SafetyGuard = SafetyGuard()) {
+    init(safety: SafetyGuard = SafetyGuard(),
+         moveToTrash: @escaping @Sendable (URL) throws -> Void = { try FileManager.default.trashItem(at: $0, resultingItemURL: nil) }) {
         self.safety = safety
+        self.moveToTrash = moveToTrash
     }
 
     /// Removes the given items off the main thread and returns an aggregate outcome.
@@ -68,7 +72,7 @@ final class CleanerService {
                     do {
                         switch mode {
                         case .trash:
-                            try fm.trashItem(at: item.url, resultingItemURL: nil)
+                            try self.moveToTrash(item.url)
                         case .permanentDelete:
                             try fm.removeItem(at: item.url)
                         }

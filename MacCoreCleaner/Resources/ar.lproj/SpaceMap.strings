@@ -1,0 +1,16 @@
+"nav.spaceMap" = "خريطة المساحة";
+"spacemap.home" = "المجلد الرئيسي";
+"spacemap.up" = "العودة إلى المجلد الأعلى";
+"spacemap.startupDisk" = "قرص بدء التشغيل";
+"spacemap.volumeUsage" = "المستخدم %1$@ · المتاح %2$@ من %3$@";
+"spacemap.empty.title" = "لا يوجد ما يُعرض";
+"spacemap.empty.message" = "هذا المجلد فارغ أو تعذّرت قراءته.";
+"spacemap.hint" = "انقر على فقاعة مجلد لعرض محتواه.";
+"spacemap.measuring" = "جارٍ قياس %1$d من %2$d عنصر…";
+"spacemap.partial" = "نتيجة جزئية — تعذّرت قراءة بعض العناصر";
+"spacemap.measured" = "اكتمل القياس · %1$@";
+"spacemap.largest" = "أكبر العناصر";
+"spacemap.more" = "%1$d عناصر أخرى · %2$@";
+"spacemap.readOnly" = "للعرض فقط — لا يتم تغيير أو حذف أي شيء هنا.";
+"spacemap.reclaimable" = "يمكن تنظيف %1$@";
+"spacemap.open" = "فتح";

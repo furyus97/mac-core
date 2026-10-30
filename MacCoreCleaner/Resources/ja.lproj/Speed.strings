@@ -1,0 +1,23 @@
+/* Speed (startup items) */
+"nav.speed" = "スピード";
+"speed.subtitle" = "ログイン時や Mac の起動時に自動で起動するアプリやヘルパーです。";
+"speed.eyebrow" = "起動項目";
+"speed.summary.title" = "起動項目とバックグラウンド項目";
+"speed.metric.enabled" = "ログイン時に有効";
+"speed.metric.switchable" = "切り替え可能";
+"speed.openLoginItems" = "ログイン項目設定を開く";
+"speed.reversibleNote" = "オフにしても自動起動が止まるだけです。何も削除されず、いつでもオンに戻せます。";
+"speed.scope.userAgent" = "自分のログインエージェント";
+"speed.scope.globalAgent" = "すべてのユーザ用エージェント";
+"speed.scope.globalDaemon" = "システムのバックグラウンドサービス";
+"speed.adminNote" = "管理者権限が必要です — システム設定で管理してください。";
+"speed.tag.running" = "実行中";
+"speed.tag.apple" = "Apple";
+"speed.tag.linked" = "リンク";
+"speed.help.linked" = "別の場所にあるファイルへのリンクのため、読み取り専用で表示しています。";
+"speed.empty.title" = "起動項目はありません";
+"speed.empty.message" = "LaunchAgents と LaunchDaemons フォルダに項目は見つかりませんでした。";
+"speed.error.toggle" = "“%@”を変更できませんでした: %@";
+"speed.error.apple" = "Apple の項目は macOS が管理しているため、ここでは変更できません。";
+"speed.error.label" = "この項目のラベルが無効なため、変更できません。";
+"speed.error.command" = "launchctl で変更を適用できませんでした。";

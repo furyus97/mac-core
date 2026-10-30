@@ -130,7 +130,7 @@ struct ConfirmCleanSheet: View {
                 .keyboardShortcut(.cancelAction)
             Button(isPermanent ? tr("comp.confirm.permanentDelete") : tr("common.moveToTrash"), role: isPermanent ? .destructive : nil, action: onConfirm)
                 .keyboardShortcut(.defaultAction)
-                .buttonStyle(PrimaryGradientButtonStyle(tint: isPermanent ? AppColor.danger : AppColor.primary))
+                .buttonStyle(PrimaryGradientButtonStyle(tint: isPermanent ? AppColor.danger : nil))
                 .disabled(!confirmEnabled)
         }
     }
